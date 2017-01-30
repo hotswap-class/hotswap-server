@@ -9,7 +9,7 @@ export class HotSwap {
         this.version = jsonFile.readFileSync('./dist/version.json').version;
     }
     
-    private buildVersion = () => {
+    public buildVersion = () => {
         let that = this
         this.version += 0.1;
         this.version = parseFloat(this.version.toFixed(1));
@@ -40,7 +40,6 @@ export class HotSwap {
             if (/\.html$/.test(filename) && that.flag) {
                 that.buildVersion();
             }
-            // that.buildVersion();
         });
     }
 

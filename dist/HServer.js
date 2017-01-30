@@ -37,14 +37,19 @@ var HServer = (function () {
             _this.defineVersion();
             _this.compileZip();
         };
+        this.buildVersion = function () {
+            var that = _this;
+            _this.app.get('/buildVersion', function (req, res) {
+                that.hotswap.buildVersion();
+                res.send('done');
+            });
+        };
         this.startServer = function () {
             var that = _this;
             _this.myio = io().listen(_this.app.listen(3000));
+            console.log("App started at http://localhost:3000");
             _this.myio.on('connection', function (socket) {
                 that.hotswap.setSocket(socket);
-                // socket.emit('version', {
-                //     version: that.hotswap.getVersion()
-                // });
             });
             // this.http.listen(3000, function () {
             //     console.log('server running at 3000');

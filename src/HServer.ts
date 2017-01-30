@@ -4,17 +4,13 @@ import * as FileSystem from 'fs';
 import {
     HotSwap
 } from './HotSwap';
-
-import * as http from 'http';
 import * as io from 'socket.io';
 // var http = require('http').Server(app);
 // var io = require('socket.io')(http);
 
 export class HServer {
     private app: Express;
-    private server;
     private hotswap: HotSwap;
-    private http;
     private myio;
     private socket;
     constructor() {
@@ -63,14 +59,20 @@ export class HServer {
 
     }
 
+    private buildVersion = () => {
+        let that = this;
+        this.app.get('/buildVersion',function(req,res){
+            that.hotswap.buildVersion();
+            res.send('done');
+        });
+    }
+
     public startServer = () => {
         let that= this;
         this.myio = io().listen(this.app.listen(3000));
+        console.log("App started at http://localhost:3000");
         this.myio.on('connection', function (socket) {
             that.hotswap.setSocket(socket);
-            // socket.emit('version', {
-            //     version: that.hotswap.getVersion()
-            // });
         });
 
         // this.http.listen(3000, function () {

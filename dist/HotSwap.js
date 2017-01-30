@@ -34,7 +34,6 @@ var HotSwap = (function () {
                 if (/\.html$/.test(filename) && that.flag) {
                     that.buildVersion();
                 }
-                // that.buildVersion();
             });
         };
         this.getVersion = function () {
