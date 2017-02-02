@@ -57,11 +57,13 @@ export class HServer {
 
         this.compileZip();
 
+        this.buildVersion();
+
     }
 
     private buildVersion = () => {
         let that = this;
-        this.app.get('/buildVersion',function(req,res){
+        this.app.get('/buildversion',function(req,res){
             that.hotswap.buildVersion();
             res.send('done');
         });

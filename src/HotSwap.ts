@@ -38,7 +38,8 @@ export class HotSwap {
             //toggle flag
             that.flag = that.flag ? false : true;
             if (/\.html$/.test(filename) && that.flag) {
-                that.buildVersion();
+                // that.buildVersion();
+                console.log('index.html file updated. Run http://localhost:3000/buildversion to build a new client version')
             }
         });
     }

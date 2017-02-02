@@ -36,10 +36,11 @@ var HServer = (function () {
             _this.defineRoot();
             _this.defineVersion();
             _this.compileZip();
+            _this.buildVersion();
         };
         this.buildVersion = function () {
             var that = _this;
-            _this.app.get('/buildVersion', function (req, res) {
+            _this.app.get('/buildversion', function (req, res) {
                 that.hotswap.buildVersion();
                 res.send('done');
             });
