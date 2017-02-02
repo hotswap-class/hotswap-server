@@ -3,11 +3,11 @@ var nodemailer = require("nodemailer");
 var OTPHandler = (function () {
     function OTPHandler() {
         this.transport = nodemailer.createTransport({
-            host: "smtp.yandex.com",
-            port: 465,
+            host: "debugmail.io",
+            port: 25,
             auth: {
-                user: "swethaphatke@yandex.com",
-                pass: "helloswetha"
+                user: "vinaybedre@gmail.com",
+                pass: "0c853550-e890-11e6-9f88-e585862dca14"
             }
         });
     }
@@ -16,7 +16,7 @@ var OTPHandler = (function () {
             //generateOTP
             this.otp = Math.floor(Math.random() * 899999 + 100000);
             var mailOptions_1 = {
-                from: 'Swetha Phatke <swethaphatke@yandex.com>',
+                from: 'Swetha Phatke <swethaphatke@gmail.com>',
                 to: email,
                 subject: "OTP For Login",
                 html: 'Your OTP for login is ' + this.otp
